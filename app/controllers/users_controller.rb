@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -20,18 +20,19 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
   end
   
   def update
   end
   
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     redirect_to users_url
   end
   
+  def set_user
+    @user = User.find(params[:id])
+  end
   private
   
     def user_params
